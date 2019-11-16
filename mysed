@@ -1,0 +1,19 @@
+#!/bin/bash                                                                                               
+# Name: M***V***R***                                                                            
+# Date: November 15, 2019                                                                                 
+# File: mysed                                                                                       
+# Week: 4, Conditional Statements                                                                         
+# Usage: Appends ’Robert Frost' at the end of the line                                                    
+#        that contains the text, ‘I’ in the given file.
+#        poem.txt - parameter file
+
+file_entered=$1
+word2find='I'
+word2append='Robert Frost'
+if [ "$#" -eq 0 ]
+then
+    echo "No file supplied."
+else
+    sed "/${word2find}/ s/$/ ${word2append}/" "$file_entered"
+    echo
+fi
