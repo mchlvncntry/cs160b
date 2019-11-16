@@ -1,0 +1,23 @@
+#!/bin/bash                                                                                               
+# Name: M***V***R***                                                                             
+# Date: November 15, 2019                                                                                 
+# File: valids                                                                                      
+# Week: 4, Conditional Statements                                                                         
+# Usage: Prints "yes" if positional argument is a valid shell variable name                                      
+#        and "no" otherwise                                                                                      
+
+# Assigning posiitonal parameter and regex to variables for readability purposes.                         
+argument_passed=$1
+regex_match="^[_a-zA-Z][a-zA-Z_0-9]+$"
+
+if [ "$#" -eq 0 ]
+then
+    echo -e "No argument supplied.\n"
+else
+    if [[ $argument_passed =~ $regex_match ]]
+    then
+        echo -e "Yes, "argument \'"$1"\' "is a valid variable name.\n"
+    else
+        echo -e "No, "argument \'"$1"\' "is an invalid variable name.\n"
+    fi
+fi
