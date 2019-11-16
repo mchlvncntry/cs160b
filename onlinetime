@@ -18,6 +18,8 @@ diff_seconds_between_date_and_now=$((
 ))
 how_many_hours=$((diff_seconds_between_date_and_now / 3600))
 how_many_minutes=$((diff_seconds_between_date_and_now % 3600 / 60))
+
+# Mimics ternary operation in java
 if [ "$how_many_hours" -le 1 ]
 then
     hour_word='hour'
@@ -25,6 +27,7 @@ else
     hour_word='hours'
 fi
 
+# Mimics ternary operation in java
 if [ "$how_many_minutes" -le 1 ]
 then
     minute_word='minute'
@@ -32,4 +35,5 @@ else
     minute_word='minutes'
 fi
 
+# Print results!
 echo "$how_many_hours" "$hour_word" "$how_many_minutes" "$minute_word"
