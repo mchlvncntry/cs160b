@@ -1,0 +1,35 @@
+#!/bin/bash                                                                                               
+# Name: M***V***R***                                                                             
+# Date: November 15, 2019                                                                                 
+# File: onlinetime                                                                                        
+# Week: 4, Conditional Statements                                                                         
+# Usage: Use the date and who commands to write a program called onlinetime                               
+#        that prints the number of hours and minutes that a user has been logged on                       
+#        to the Hills system. Assume that the the total time will be less than 24 hours.                  
+
+date_string=$(
+    who |
+    sort -k3M -k4n |
+    awk '{if ($1 ~ user) {print $3, $4, $5;exit}}' user="$1"
+)
+
+diff_seconds_between_date_and_now=$((
+    $(date +%s) - $(date -d "$date_string" +%s)
+))
+how_many_hours=$((diff_seconds_between_date_and_now / 3600))
+how_many_minutes=$((diff_seconds_between_date_and_now % 3600 / 60))
+if [ "$how_many_hours" -le 1 ]
+then
+    hour_word='hour'
+else
+    hour_word='hours'
+fi
+
+if [ "$how_many_minutes" -le 1 ]
+then
+    minute_word='minute'
+else
+    minute_word='minutes'
+fi
+
+echo "$how_many_hours" "$hour_word" "$how_many_minutes" "$minute_word"
