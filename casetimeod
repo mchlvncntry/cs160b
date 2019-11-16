@@ -1,0 +1,19 @@
+#!/bin/bash                                                                                               
+# Name: M***V***R***                                                                              
+# Date: November 15, 2019                                                                                 
+# File: casetimeod                                                                                        
+# Week: 4, Conditional Statements                                                                         
+# Usage: Displays the time of day in a.m. or p.m. notation                                                
+#        rather than in 24-hour clock time.                                                               
+
+current_date=$(date +"%A, %B %d, %Y")
+hour=$(date +"%H")
+min=$(date +"%M")
+sec=$(date +"%S")
+echo # for readability purposes                                                                           
+
+case $hour in
+    13|14|15|16|17|1819|20|21|22|23) echo "$current_date" $((hour - 12)):"$min":"$sec" pm ;;
+    0) echo "$current_date" 12:"$min":"$sec" pm;;
+    *) echo "$current_date" "$hour":"$min":"$sec" am ;;
+esac
